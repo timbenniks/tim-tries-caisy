@@ -1,18 +1,19 @@
 export type Article = {
   author: {
-    name: String;
-    role: String;
+    name: string;
+    role: string;
   };
   category: {
-    name: String;
+    name: string;
   };
-  slug: String;
-  teaserDesciption: String;
-  teaserHeadline: String;
+  id: string;
+  slug: string;
+  teaserDesciption: string;
+  teaserHeadline: string;
   teaserImage: {
-    height: Number;
-    src: String;
-    title: String;
-    width: Number;
+    height: number;
+    src: string;
+    title: string;
+    width: number;
   };
 };

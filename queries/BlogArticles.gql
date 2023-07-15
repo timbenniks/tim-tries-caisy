@@ -3,6 +3,7 @@ query BlogArticles {
     edges {
       node {
         slug
+        id
         teaserDesciption
         teaserHeadline
         author {

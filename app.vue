@@ -18,7 +18,7 @@ const articles = computed(() => {
     <ul class="grid gap-8 mx-auto grid-cols-3">
       <card
         v-for="article in articles"
-        :key="(article?.slug as string)"
+        :key="article?.slug"
         :article="article"
       />
     </ul>

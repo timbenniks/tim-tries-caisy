@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <li class="py-4 bg-slate-100 rounded-md">
+  <li class="py-4 bg-slate-100 rounded-md" :id="article?.id">
     <header class="mb-4 px-4">
       <h3
         class="line-clamp-1 font-bold text-xl uppercase"
@@ -24,10 +24,10 @@ defineProps<{
       <img
         class="aspect-video object-cover w-full h-auto block mb-4"
         v-if="article?.teaserImage?.src"
-        :src="(article?.teaserImage?.src as string)"
-        :alt="(article?.teaserImage?.title as string)"
-        :width="(article?.teaserImage?.width as number)"
-        :height="(article?.teaserImage?.height as number)"
+        :src="article?.teaserImage?.src"
+        :alt="article?.teaserImage?.title"
+        :width="article?.teaserImage?.width"
+        :height="article?.teaserImage?.height"
         loading="lazy"
       />
       <p v-if="article?.teaserDesciption" class="px-4 line-clamp-3">

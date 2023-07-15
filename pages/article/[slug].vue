@@ -1,0 +1,51 @@
+<script lang="ts" setup>
+import { RichTextRenderer } from "@caisy/rich-text-vue-renderer";
+import DocumentLink from "../../components/overwrites/DocumentLink.vue";
+
+const route = useRoute();
+const { slug } = route.params;
+const { data } = await useAsyncGql("allBlogArticleBySlug", {
+  slug: slug as string,
+});
+
+const article = computed(() => {
+  return data.value?.allBlogArticle?.edges[0]?.node;
+});
+</script>
+
+<template>
+  <main class="m-8 max-w-6xl mx-auto">
+    <p class="uppercase text-xs mb-4">
+      <nuxt-link to="/" class="underline">← back to overview</nuxt-link>
+    </p>
+
+    <header class="mb-8">
+      <h1 class="text-5xl mb-2">{{ article?.teaserHeadline }}</h1>
+
+      <p class="uppercase text-xs">
+        By <span class="underline">{{ article?.author?.name }}</span> in
+        <span class="underline">{{ article?.category?.name }}</span>
+      </p>
+    </header>
+
+    <img
+      class="aspect-[28/9] object-cover w-full h-auto block mb-8"
+      v-if="article?.teaserImage?.src"
+      :src="`${article?.teaserImage?.src}`"
+      :srcset="`${article?.teaserImage?.src}?w=3840 1920w, ${article?.teaserImage?.src}?w=1920 1280w,
+    ${article?.teaserImage?.src}?w=1280 640w`"
+      :alt="(article?.teaserImage?.title as string)"
+      :width="(article?.teaserImage?.width as number)"
+      :height="(article?.teaserImage?.height as number)"
+      loading="lazy"
+    />
+
+    <article class="prose mx-auto">
+      <RichTextRenderer
+        :blockMap="{ documentLink: DocumentLink }"
+        :node="article?.text?.json"
+        :connections="article?.text?.connections"
+      />
+    </article>
+  </main>
+</template>

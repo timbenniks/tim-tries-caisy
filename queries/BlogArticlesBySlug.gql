@@ -1,0 +1,42 @@
+query allBlogArticleBySlug($slug: String!) {
+  allBlogArticle(where: { slug: { eq: $slug } }) {
+    edges {
+      node {
+        slug
+        id
+        teaserDesciption
+        teaserHeadline
+        text {
+          connections {
+            __typename
+            ... on Asset {
+              title
+              src
+              originType
+              keywords
+              id
+              dominantColor
+              description
+              copyright
+              author
+            }
+          }
+          json
+        }
+        author {
+          name
+          role
+        }
+        category {
+          name
+        }
+        teaserImage {
+          src
+          width
+          height
+          title
+        }
+      }
+    }
+  }
+}

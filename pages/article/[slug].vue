@@ -4,12 +4,12 @@ import DocumentLink from "../../components/overwrites/DocumentLink.vue";
 
 const route = useRoute();
 const { slug } = route.params;
-const { data } = await useAsyncGql("allBlogArticleBySlug", {
-  slug: slug as string,
-});
+const data = await GqlAllBlogArticleBySlug({ slug: slug as string });
 
 const article = computed(() => {
-  return data.value?.allBlogArticle?.edges[0]?.node;
+  if (data.allBlogArticle?.edges) {
+    return data.allBlogArticle?.edges[0]?.node;
+  }
 });
 </script>
 

@@ -47,11 +47,21 @@ export default defineNuxtConfig({
 });
 ```
 
-Add `.gql` query files in the `./queries` folder and use them like this:
+Add `.gql` query files in the `./queries` folder and use the Gql generated functions like this:
 
 ```js
-const { data } = await useAsyncGql("<QUERY_NAME>", { foo: "bar" });
+// All Blog Articles
+const { data } = await const data = await GqlBlogArticles();
+
+// Blog Article By Slug
+const data = await GqlAllBlogArticleBySlug({ slug: slug as string });
 ```
+
+## Additional goodies
+
+- Tailwind
+- A custom Caisy Nuxt image Provider
+- Caisy RichTextEditor output
 
 ## Development Server
 

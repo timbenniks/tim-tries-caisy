@@ -1,0 +1,24 @@
+query BlogArticles {
+  allBlogArticle {
+    edges {
+      node {
+        slug
+        teaserDesciption
+        teaserHeadline
+        author {
+          name
+          role
+        }
+        category {
+          name
+        }
+        teaserImage {
+          src
+          width
+          height
+          title
+        }
+      }
+    }
+  }
+}

@@ -7,17 +7,19 @@ defineProps({
 
 <template>
   <template v-for="component in connections">
-    <img
+    <nuxt-img
       v-if="
         component?.__typename == 'Asset' &&
         node?.attrs?.documentId == component.id
       "
+      provider="caisy"
       class="my-4 not-prose"
       loading="lazy"
-      :src="`${component?.src}?w=1920&h=960`"
-      :srcset="`${component?.src}?w=3840&h=1920 1920w, ${component?.src}?w=1920&h=960 1280w,
-    ${component?.src}?w=1280&h=640 640w`"
+      :src="component?.src"
+      :width="component?.width"
+      :height="component?.height"
       :alt="component?.title"
+      sizes="sm:100vw md:50vw"
     />
   </template>
 </template>

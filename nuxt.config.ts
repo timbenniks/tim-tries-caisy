@@ -1,6 +1,15 @@
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  modules: ['nuxt-graphql-client', '@nuxtjs/tailwindcss'],
+  devtools: { enabled: false },
+  modules: ['nuxt-graphql-client', '@nuxtjs/tailwindcss', '@nuxt/image'],
+
+  image: {
+    providers: {
+      customProvider: {
+        name: 'caisy',
+        provider: '~/providers/caisy',
+      }
+    }
+  },
 
   runtimeConfig: {
     public: {

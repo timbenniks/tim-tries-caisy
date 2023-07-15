@@ -22,15 +22,18 @@ defineProps<{
         </p>
       </header>
       <figure>
-        <img
-          class="aspect-video object-cover w-full h-auto block mb-4"
+        <nuxt-img
           v-if="article?.teaserImage?.src"
-          :src="`${article?.teaserImage?.src}?w=600`"
+          provider="caisy"
+          class="aspect-video object-cover w-full h-auto block mb-4"
+          :src="`${article?.teaserImage?.src}`"
           :alt="article?.teaserImage?.title"
           :width="article?.teaserImage?.width"
           :height="article?.teaserImage?.height"
           loading="lazy"
+          sizes="sm:100vw md:50vw lg:400px"
         />
+
         <p v-if="article?.teaserDesciption" class="px-4 line-clamp-3">
           {{ article.teaserDesciption }}
         </p>

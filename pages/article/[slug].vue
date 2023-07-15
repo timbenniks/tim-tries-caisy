@@ -28,16 +28,16 @@ const article = computed(() => {
       </p>
     </header>
 
-    <img
-      class="aspect-[28/9] object-cover w-full h-auto block mb-8"
+    <nuxt-img
       v-if="article?.teaserImage?.src"
+      provider="caisy"
+      class="aspect-[28/9] object-cover w-full h-auto block mb-8"
       :src="`${article?.teaserImage?.src}`"
-      :srcset="`${article?.teaserImage?.src}?w=3840 1920w, ${article?.teaserImage?.src}?w=1920 1280w,
-    ${article?.teaserImage?.src}?w=1280 640w`"
       :alt="(article?.teaserImage?.title as string)"
       :width="(article?.teaserImage?.width as number)"
-      :height="(article?.teaserImage?.height as number)"
+      :height="Number((article?.teaserImage?.width as number) * (9/28)).toFixed(0)"
       loading="lazy"
+      sizes="sm:100vw"
     />
 
     <article class="prose mx-auto">

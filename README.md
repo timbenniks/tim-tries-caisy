@@ -18,10 +18,11 @@ Install `nuxt-graphql-client`
 yarn add nuxt-graphql-client
 ```
 
-In `.env` add and make sure to add content viewing permissions in Hygraph API settings
+In `.env` add and make sure to create an API key in Caisy developer settings
 
 ```
-GQL_HOST=https://<HYGRAPH_CDN_LOCATION>.cdn.hygraph.com/content/<ID>/master
+CAISY_HOST="https://cloud.caisy.io/api/v3/e/<PROJECT_ID>/graphql"
+CAISY_APIKEY="<API_KEY>"
 ```
 
 In Nuxt Config add
@@ -29,6 +30,20 @@ In Nuxt Config add
 ```js
 export default defineNuxtConfig({
   modules: ["nuxt-graphql-client"],
+  runtimeConfig: {
+    public: {
+      'graphql-client': {
+        clients: {
+          caisy: {
+            host: process.env.CAISY_HOST as string,
+            headers: {
+              'x-caisy-apikey': process.env.CAISY_APIKEY as string,
+            }
+          }
+        }
+      }
+    }
+  }
 });
 ```
 

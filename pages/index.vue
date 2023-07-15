@@ -12,10 +12,13 @@ const articles = computed(() => {
 </script>
 
 <template>
+  <Head>
+    <Title>Tim Tries Caisy</Title>
+  </Head>
   <main class="m-8">
     <h1 class="text-5xl my-8">Latest blog articles</h1>
 
-    <ul class="grid gap-8 mx-auto grid-cols-3">
+    <ul class="grid gap-8 mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <card
         v-for="article in articles"
         :key="article?.slug"

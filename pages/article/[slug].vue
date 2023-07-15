@@ -14,7 +14,10 @@ const article = computed(() => {
 </script>
 
 <template>
-  <main class="m-8 max-w-6xl mx-auto">
+  <Head>
+    <Title>{{ article?.teaserHeadline }}</Title>
+  </Head>
+  <main class="px-4 md:px-0 m-8 max-w-6xl mx-auto">
     <p class="uppercase text-xs mb-4">
       <nuxt-link to="/" class="underline">← back to overview</nuxt-link>
     </p>

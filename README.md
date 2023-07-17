@@ -10,7 +10,7 @@ Make sure to install the dependencies:
 yarn install
 ```
 
-## Add GraphQL and Hygraph connections
+## Add GraphQL and Caisy connections
 
 Install `nuxt-graphql-client`
 
